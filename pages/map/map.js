@@ -143,7 +143,7 @@ Page({
       })
     } else {
       wx.navigateTo({
-        url: '../logs/logs'
+        url: '../house/house'
       })
     }
   }
