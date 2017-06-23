@@ -22,6 +22,12 @@ var config = {
 
         // 查询房子地址
         houseUrl: `https://${host}/house/all`,
+        
+        // 图片地址
+        imageUrl: `https://${host}/house_images`,
+
+        // 查询房间详情
+        getRoomsUrl: `https://${host}/room/getRoomsByHouseId`,
     }
 };
 

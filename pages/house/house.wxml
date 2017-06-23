@@ -1,8 +1,8 @@
-<swiper indicator-dots="{{indicatorDots}}"
+<swiper style="height:200px" indicator-dots="{{indicatorDots}}"
   autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-  <block wx:for="{{imgUrls}}">
+  <block wx:for="{{imgUrls}}" wx:key="key">
     <swiper-item>
-      <image src="{{item}}" class="slide-image"  style="width: 300px; height: 100px;"/>
+      <image src="{{item}}" class="slide-image" mode="aspectFill" style="width: {{swiperWidth}}px; height: 200px;"/>
     </swiper-item>
   </block>
 </swiper>
@@ -12,22 +12,75 @@
 <slider bindchange="intervalChange" show-value min="500" max="2000"/> interval
 <slider bindchange="durationChange" show-value min="1000" max="10000"/> duration
 -->
+<view class="page-section">
+  <view class="section__title">房间类型：</view>
 
-<view class="navigator-box navigator-box-show">
-  <navigator url="../logs/logs" class="navigator">
-    <view class="navigator-text">房价：</view>
-    <view class="navigator-text">请选择房间类型</view>
-  </navigator>
-  <navigator url="../logs/logs" class="navigator">
-    <view class="navigator-text">房号：</view>
-    <view class="navigator-text">请选择房间类型</view>
-  </navigator>
-  <navigator url="../logs/logs" class="navigator">
-    <view class="navigator-text">室号：</view>
-    <view class="navigator-text">2804</view>
-  </navigator>
-  <navigator url="../logs/logs" class="navigator">
-    <view class="navigator-text">地址：</view>
-    <view class="navigator-text">大寨路6号莱安逸珲</view>
-  </navigator>
+  <block wx:if="{{roomArray.length>4}}"> 
+      <view class="flex-wrp" style="flex-direction:row;">
+        <block wx:for="{{roomArray}}" wx:key="key">
+          <block wx:if="{{index<4}}">
+            <block wx:if="{{index==selectedRoomIndex}}">
+              <button style="background-color:yellow" id="{{index}}" bindtap="chooseRoomType" class="flex-item">{{item.roomName}}</button>
+            </block>
+            <block wx:else>
+              <button id="{{index}}" bindtap="chooseRoomType" class="flex-item">{{item.roomName}}</button>
+            </block>
+          </block>
+        </block>
+      </view>
+      <view class="flex-wrp" style="flex-direction:row;">
+        <block wx:for="{{roomArray}}" wx:key="key">
+          <block wx:if="{{index>=4}}">
+            <block wx:if="{{index==selectedRoomIndex}}">
+              <button style="background-color:yellow" id="{{index}}" bindtap="chooseRoomType" class="flex-item">{{item.roomName}}</button>
+            </block>
+            <block wx:else>
+              <button id="{{index}}" bindtap="chooseRoomType" class="flex-item">{{item.roomName}}</button>
+            </block>
+          </block>
+        </block>
+      </view>
+  </block>
+  <block wx:else>
+      <view class="flex-wrp" style="flex-direction:row;">
+        <block wx:for="{{roomArray}}" wx:key="key">
+          <block wx:if="{{index>=0}}">
+            <block wx:if="{{index==selectedRoomIndex}}">
+              <button style="background-color:yellow" id="{{index}}" bindtap="chooseRoomType" class="flex-item">{{item.roomName}}</button>
+            </block>
+            <block wx:else>
+              <button id="{{index}}" bindtap="chooseRoomType" class="flex-item">{{item.roomName}}</button>
+            </block>
+          </block>
+        </block>
+      </view>
+  </block>
+
+<!--
+  <view class="flex-wrp" style="flex-direction:row;">
+    <block wx:for="{{roomArray}}" wx:key="key">
+        <button class="flex-item">{{index}}{{item.roomName}}</button>
+    </block>
+  </view>
+ -->
 </view>
+<view class="navigator-box navigator-box-show">
+  <view class="navigator">
+    <view class="navigator-text">房价：</view>
+    <view class="navigator-text">{{price}}</view>
+  </view>
+  <view class="navigator">
+    <view class="navigator-text">房号：</view>
+    <view class="navigator-text">{{roomNo}}</view>
+  </view>
+  <view class="navigator">
+    <view class="navigator-text">室号：</view>
+    <view class="navigator-text">{{room}}</view>
+  </view>
+  <view class="navigator">
+    <view class="navigator-text">地址：</view>
+    <view class="navigator-text">{{address}}</view>
+  </view>
+</view>
+
+<button type="primary" bindtap="callLandlord" style="margin:20px;"> 联系房东 </button>

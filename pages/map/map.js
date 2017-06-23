@@ -1,7 +1,9 @@
 // 引入配置
 var config = require('../../config');
 
-var selectedHouse = 0;
+var selectedHouse = {id:0};
+
+var houseArray = new Array();
 
 /**
  * 生成房子的位置
@@ -99,7 +101,7 @@ Page({
       },
       success: function (res) {
         console.log(res.data)
-
+        houseArray = res.data;
         var markers = that.data.markers;
         for (var i = 0; i < res.data.length; i++) {
           markers.push(createMarker(res.data[i]));
@@ -123,12 +125,17 @@ Page({
     console.log(e.type)
   },
   markertap(e) {
-    selectedHouse = e.markerId;
+
+    for (var i = 0; i < houseArray.length; i++) {
+      if (e.markerId==houseArray[i].id){
+          selectedHouse = houseArray[i];
+      }
+    }
     console.log(e.markerId)
   },
   controltap(e) {
     console.log(e.controlId)
-    if(selectedHouse<1){
+    if(selectedHouse.id<1){
       wx.showModal({
         title: '提示',
         content: '请选择您想入住的房子',
@@ -143,7 +150,7 @@ Page({
       })
     } else {
       wx.navigateTo({
-        url: '../house/house'
+        url: '../house/house?selectedHouse=' + JSON.stringify(selectedHouse)
       })
     }
   }

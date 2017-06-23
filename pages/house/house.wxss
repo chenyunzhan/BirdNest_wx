@@ -1,2 +1,32 @@
 /* pages/house/house.wxss */
 @import "../../common/index.wxss";
+
+.flex-wrp{
+  margin: 20rpx;
+  display:flex;
+}
+.flex-item{
+  width: 150rpx;
+  height: 70rpx;
+  font-size: 26rpx;
+  margin: 10rpx;
+  padding: 1px;
+}
+.flex-item-V{
+  margin: 0 auto;
+  width: 300rpx;
+  height: 200rpx;
+}
+
+
+.section__title{
+  margin: 20rpx;
+}
+
+.bookButton {
+  margin-top: 50rpx;
+}
+
+.button-active{
+   background:yellow;
+}

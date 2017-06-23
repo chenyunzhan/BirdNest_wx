@@ -2,7 +2,7 @@
   "pages":[
     "pages/map/map",
     "pages/logs/logs",
-    "pages/house/house"
+    "pages/house/house"        
   ],
   "window":{
     "backgroundTextStyle":"light",
