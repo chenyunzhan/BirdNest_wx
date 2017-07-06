@@ -13,56 +13,31 @@
 <slider bindchange="durationChange" show-value min="1000" max="10000"/> duration
 -->
 <view class="page-section">
-  <view class="section__title">房间类型：</view>
+  <view class="section__title">配套设施：</view>
 
-  <block wx:if="{{roomArray.length>4}}"> 
+  <block wx:if="{{furnitureArr.length>4}}"> 
       <view class="flex-wrp" style="flex-direction:row;">
-        <block wx:for="{{roomArray}}" wx:key="key">
+        <block wx:for="{{furnitureArr}}" wx:key="key">
           <block wx:if="{{index<4}}">
-            <block wx:if="{{index==selectedRoomIndex}}">
-              <button style="background-color:yellow" id="{{index}}" bindtap="chooseRoomType" class="flex-item">{{item.roomName}}</button>
-            </block>
-            <block wx:else>
-              <button id="{{index}}" bindtap="chooseRoomType" class="flex-item">{{item.roomName}}</button>
-            </block>
+            <button id="{{index}}" class="flex-item">{{item}}</button>
           </block>
         </block>
       </view>
       <view class="flex-wrp" style="flex-direction:row;">
-        <block wx:for="{{roomArray}}" wx:key="key">
+        <block wx:for="{{furnitureArr}}" wx:key="key">
           <block wx:if="{{index>=4}}">
-            <block wx:if="{{index==selectedRoomIndex}}">
-              <button style="background-color:yellow" id="{{index}}" bindtap="chooseRoomType" class="flex-item">{{item.roomName}}</button>
-            </block>
-            <block wx:else>
-              <button id="{{index}}" bindtap="chooseRoomType" class="flex-item">{{item.roomName}}</button>
-            </block>
+            <button id="{{index}}" class="flex-item">{{item}}</button>
           </block>
         </block>
       </view>
   </block>
   <block wx:else>
       <view class="flex-wrp" style="flex-direction:row;">
-        <block wx:for="{{roomArray}}" wx:key="key">
-          <block wx:if="{{index>=0}}">
-            <block wx:if="{{index==selectedRoomIndex}}">
-              <button style="background-color:yellow" id="{{index}}" bindtap="chooseRoomType" class="flex-item">{{item.roomName}}</button>
-            </block>
-            <block wx:else>
-              <button id="{{index}}" bindtap="chooseRoomType" class="flex-item">{{item.roomName}}</button>
-            </block>
-          </block>
+        <block wx:for="{{furnitureArr}}" wx:key="key">
+            <button id="{{index}}" class="flex-item">{{item}}</button>
         </block>
       </view>
   </block>
-
-<!--
-  <view class="flex-wrp" style="flex-direction:row;">
-    <block wx:for="{{roomArray}}" wx:key="key">
-        <button class="flex-item">{{index}}{{item.roomName}}</button>
-    </block>
-  </view>
- -->
 </view>
 <view class="navigator-box navigator-box-show">
   <view class="navigator">
@@ -82,5 +57,6 @@
     <view class="navigator-text">{{address}}</view>
   </view>
 </view>
-
+<button type="primary" bindtap="getNextRoom" style="margin:20px;"> 下个房源 </button>
 <button type="primary" bindtap="callLandlord" style="margin:20px;"> 联系房东 </button>
+<view class="section-item"></view>

@@ -28,6 +28,9 @@ var config = {
 
         // 查询房间详情
         getRoomsUrl: `https://${host}/room/getRoomsByHouseId`,
+
+        //按顺序排序
+        getRoomsOrderByDistance: `https://${host}/room/getRoomsOrderByDistance`,
     }
 };
 

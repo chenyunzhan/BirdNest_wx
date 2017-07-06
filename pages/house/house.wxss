@@ -30,3 +30,9 @@
 .button-active{
    background:yellow;
 }
+
+.section-item{
+  width: 200rpx;
+  height: 30rpx;
+  font-size: 26rpx;
+}
